@@ -12,20 +12,13 @@ def req(url): # --- Faz o scrap das informações do cep
 
 def add_db(dadosdb): # --- Salva no banco de dados
     try:
-        db = open('db\\db.text', 'a', newline="", encoding="UTF8")     
-    except OSError:
-        os.makedirs('db')
-        espera()
-        print('\nCriando banco de dados.')
-        db = open('db\\db.text', 'a', newline="", encoding="UTF8")
-    else:
-        try:
-            db.write( (f'{dadosdb}') )
-            print('As informações foram salvas no banco de dados com sucesso!')
-            db.close()
-        except Exception as error:
-            db.close()
-            print('Não foi possivel salvar as informações no banco de dados!')   
+        db = open('db\\db.text', 'a', newline="", encoding="UTF8")  
+        db.write( (f'{dadosdb}') )
+        print('As informações foram salvas no banco de dados com sucesso!')
+        db.close()
+    except Exception as error:
+        db.close()
+        print('Não foi possivel salvar as informações no banco de dados!')   
 
 def pegardds(): # --- Recolhe os dados e envia para o banco de dados
     while True:
@@ -87,6 +80,13 @@ def mostrardb(): # --- Nostra o banco de dados do programa
             espera()
 
 def menu(): # --- Cria o menu do programa
+    try:
+        os.makedirs('db')    
+        db = open('db\\db.text', 'a', newline="", encoding="UTF8")
+        db.close()
+    except OSError:
+        db = open('db\\db.text', 'a', newline="", encoding="UTF8")
+        db.close()
     while True:
         clear()
         escolhamenu = input('''MENU:\n1 - Buscar dados\n2 - Ver banco de dados\n3 - Sair\nSelecione a opção que deseja: ''')
