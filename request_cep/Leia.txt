@@ -1,0 +1,10 @@
+Cep Scraper v0.1 - Kevindmfx
+
+Programa desenvolvido em Python 3.11
+
+Codigo aberto na pasta 'script'.
+ 
+O arquivo executavel não precisa da pasta 'script'para funcionar normalmente.
+
+Para o funcionamento do arquivo descompilado é necessario a instalação da biblioteca 'Requests'.
+
